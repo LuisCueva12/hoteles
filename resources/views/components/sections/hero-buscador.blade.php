@@ -59,12 +59,8 @@
     <div class="pointer-events-none absolute inset-0 z-[1] bg-brand-blue/60 md:bg-transparent md:bg-gradient-to-r md:from-brand-blue/95 md:via-brand-blue/40 md:to-transparent"
         aria-hidden="true"></div>
 
-    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-10 md:pt-20 md:pb-14 w-full">
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-10 md:pt-44 lg:pt-48 md:pb-14 w-full">
         <div class="text-left mb-10 xl:mb-12 max-w-3xl">
-            <div
-                class="inline-flex items-center gap-1.5 bg-brand-yellow text-brand-blue text-[0.65rem] md:text-xs font-bold uppercase tracking-wider px-3 md:px-4 py-1.5 md:py-2 rounded-r-lg rounded-tl-lg mb-5 shadow-sm">
-                Hoteles y Alojamientos Verificados
-            </div>
 
             <h1
                 class="text-3xl sm:text-4xl lg:text-[2.85rem] font-extrabold text-white leading-[1.15] tracking-tight mb-4 drop-shadow-md">
@@ -75,36 +71,6 @@
             <p class="text-white/90 text-[0.95rem] sm:text-base md:text-lg max-w-2xl font-medium mb-8 drop-shadow">
                 Reserva de hoteles y habitaciones verificadas en Cajamarca, Cusco, Lima y las principales ciudades del Perú.
             </p>
-
-            <div class="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 mb-8">
-                <div
-                    class="flex-1 flex items-center gap-3 bg-brand-blue/80 backdrop-blur-md border border-white/10 rounded-xl px-4 py-3 shadow-lg hover:border-brand-yellow/50 transition-colors">
-                    <x-dynamic-component :component="'lucide-hotel'" class="w-6 h-6 text-brand-yellow shrink-0"
-                        stroke-width="2.5" />
-                    <div class="flex flex-col">
-                        <span class="text-white font-bold text-sm leading-tight">Hoteles verificados</span>
-                        <span class="text-white/70 text-xs">Calidad y confort garantizados</span>
-                    </div>
-                </div>
-                <div
-                    class="flex-1 flex items-center gap-3 bg-brand-blue/80 backdrop-blur-md border border-white/10 rounded-xl px-4 py-3 shadow-lg hover:border-brand-yellow/50 transition-colors">
-                    <x-dynamic-component :component="'lucide-shield-check'" class="w-6 h-6 text-brand-yellow shrink-0"
-                        stroke-width="2.5" />
-                    <div class="flex flex-col">
-                        <span class="text-white font-bold text-sm leading-tight">Reserva 100% segura</span>
-                        <span class="text-white/70 text-xs">Sin cargos ocultos ni sorpresas</span>
-                    </div>
-                </div>
-                <div
-                    class="flex-1 flex items-center gap-3 bg-brand-blue/80 backdrop-blur-md border border-white/10 rounded-xl px-4 py-3 shadow-lg hover:border-brand-yellow/50 transition-colors">
-                    <x-dynamic-component :component="'lucide-message-square'" class="w-6 h-6 text-brand-yellow shrink-0"
-                        stroke-width="2.5" />
-                    <div class="flex flex-col">
-                        <span class="text-white font-bold text-sm leading-tight">Atención por WhatsApp</span>
-                        <span class="text-white/70 text-xs">Soporte directo e inmediato</span>
-                    </div>
-                </div>
-            </div>
         </div>
 
         {{-- ═══════════════════════════════════════════════════════ --}}
