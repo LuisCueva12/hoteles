@@ -13,14 +13,12 @@ class Reserva extends Model
     protected $table = 'reservas';
 
     protected $fillable = [
-        'movilidad_id',
+        'hotel_id',
         'cliente_nombre',
         'cliente_documento',
         'cliente_whatsapp',
-        'ruta_viaje',
         'fecha_inicio',
         'fecha_fin',
-        'modalidad',
         'adultos',
         'ninos',
         'detalles',
@@ -34,8 +32,8 @@ class Reserva extends Model
         'ninos' => 'integer',
     ];
 
-    public function movilidad(): BelongsTo
+    public function hotel(): BelongsTo
     {
-        return $this->belongsTo(Movilidad::class);
+        return $this->belongsTo(Hotel::class, 'hotel_id');
     }
 }

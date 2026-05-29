@@ -10,14 +10,12 @@ return new class extends Migration
     {
         Schema::create('reservas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('movilidad_id')->constrained('movilidades')->cascadeOnDelete();
+            $table->foreignId('hotel_id')->constrained('hoteles')->cascadeOnDelete();
             $table->string('cliente_nombre');
-            $table->string('cliente_documento', 8);
-            $table->string('cliente_whatsapp', 9);
-            $table->string('ruta_viaje', 500);
+            $table->string('cliente_documento', 15); // increased length for standard documents
+            $table->string('cliente_whatsapp', 15); // increased length
             $table->date('fecha_inicio');
             $table->date('fecha_fin');
-            $table->enum('modalidad', ['con_conductor', 'sin_conductor']);
             $table->unsignedTinyInteger('adultos');
             $table->unsignedTinyInteger('ninos')->default(0);
             $table->text('detalles')->nullable();

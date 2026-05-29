@@ -10,15 +10,15 @@ class CategoriasSeeder extends Seeder
     public function run(): void
     {
         $categorias = [
-            ['nombre' => 'Económico', 'descripcion' => 'Vehículos económicos y accesibles', 'orden' => 1],
-            ['nombre' => 'Estándar', 'descripcion' => 'Vehículos de gama media con buen confort', 'orden' => 2],
-            ['nombre' => 'Premium', 'descripcion' => 'Vehículos de alta gama con máximo confort', 'orden' => 3],
-            ['nombre' => 'Ejecutivo', 'descripcion' => 'Vehículos para ejecutivos y eventos corporativos', 'orden' => 4],
-            ['nombre' => 'Turístico', 'descripcion' => 'Vehículos ideales para tours y viajes largos', 'orden' => 5],
+            ['nombre' => '3 Estrellas', 'descripcion' => 'Hoteles cómodos y accesibles con servicios básicos esenciales', 'orden' => 1],
+            ['nombre' => '4 Estrellas', 'descripcion' => 'Hoteles de gama media-alta con excelente confort y atención', 'orden' => 2],
+            ['nombre' => '5 Estrellas', 'descripcion' => 'Hoteles de lujo con los más altos estándares de calidad', 'orden' => 3],
+            ['nombre' => 'Boutique', 'descripcion' => 'Alojamiento exclusivo y personalizado con un estilo único', 'orden' => 4],
+            ['nombre' => 'Resort', 'descripcion' => 'Complejo hotelero con todo incluido y múltiples actividades recreativas', 'orden' => 5],
         ];
 
         foreach ($categorias as $categoria) {
-            Categoria::create($categoria);
+            Categoria::firstOrCreate(['nombre' => $categoria['nombre']], $categoria);
         }
     }
 }

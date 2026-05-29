@@ -3,7 +3,7 @@
 namespace App\Observers;
 
 use App\Models\Marca;
-use App\Models\Movilidad;
+use App\Models\Hotel;
 use App\Support\EliminaArchivoDiscoPublico;
 use App\Support\LimpiezaArchivoSubidoTrasGuardar;
 
@@ -11,8 +11,8 @@ class MarcaObserver
 {
     public function deleting(Marca $marca): void
     {
-        $marca->movilidades()->each(function (Movilidad $movilidad): void {
-            $movilidad->delete();
+        $marca->hoteles()->each(function (Hotel $hotel): void {
+            $hotel->delete();
         });
 
         $logo = $marca->logo;

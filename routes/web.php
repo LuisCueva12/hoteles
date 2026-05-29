@@ -3,10 +3,7 @@
 use App\Http\Controllers\CatalogoController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ReservaController;
-use App\Http\Controllers\SeoController;
 use Illuminate\Support\Facades\Route;
-
-
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', [LoginController::class, 'crear'])->name('login');
@@ -16,12 +13,13 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::get('/', [CatalogoController::class, 'inicio'])->name('inicio');
-Route::get('/flota', [CatalogoController::class, 'flota'])->name('flota');
+Route::get('/hoteles', [CatalogoController::class, 'catalogo'])->name('hoteles.catalogo');
+Route::get('/flota', [CatalogoController::class, 'catalogo'])->name('flota');
 Route::get('/contacto', [CatalogoController::class, 'contacto'])->name('contacto');
 Route::post('/contacto', function () {
     return redirect()->route('contacto')->with('success', 'Mensaje enviado correctamente');
 });
-Route::get('/movilidad/{movilidad}', [CatalogoController::class, 'detalle'])->name('movilidad.detalle');
+Route::get('/hotel/{hotel}', [CatalogoController::class, 'detalle'])->name('hotel.detalle');
 
 Route::post('/reservar', [ReservaController::class, 'store'])
     ->middleware('throttle:3,10')

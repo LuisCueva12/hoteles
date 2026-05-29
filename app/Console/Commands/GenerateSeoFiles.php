@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Movilidad;
+use App\Models\Hotel;
 use Illuminate\Console\Command;
 
 class GenerateSeoFiles extends Command
@@ -26,14 +26,14 @@ class GenerateSeoFiles extends Command
         $this->line('✅ robots.txt generado.');
 
         // 2. Sitemap.xml
-        $movilidades = Movilidad::where('activo', true)->get();
+        $hoteles = Hotel::where('activo', true)->get();
         $sitemap = '<?xml version="1.0" encoding="UTF-8"?>'."\n";
         $sitemap .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'."\n";
 
         // Rutas estáticas
         $routes = [
             ['loc' => url('/'), 'priority' => '1.0', 'changefreq' => 'weekly'],
-            ['loc' => url('/flota'), 'priority' => '0.9', 'changefreq' => 'weekly'],
+            ['loc' => url('/hoteles'), 'priority' => '0.9', 'changefreq' => 'weekly'],
             ['loc' => url('/contacto'), 'priority' => '0.8', 'changefreq' => 'monthly'],
         ];
 
@@ -46,10 +46,10 @@ class GenerateSeoFiles extends Command
         }
 
         // Rutas dinámicas
-        foreach ($movilidades as $m) {
-            $lastmod = $m->updated_at ? $m->updated_at->toAtomString() : now()->toAtomString();
+        foreach ($hoteles as $h) {
+            $lastmod = $h->updated_at ? $h->updated_at->toAtomString() : now()->toAtomString();
             $sitemap .= "    <url>\n";
-            $sitemap .= '        <loc>'.url('/movilidad/'.$m->slug)."</loc>\n";
+            $sitemap .= '        <loc>'.url('/hotel/'.$h->slug)."</loc>\n";
             $sitemap .= "        <lastmod>{$lastmod}</lastmod>\n";
             $sitemap .= "        <changefreq>monthly</changefreq>\n";
             $sitemap .= "        <priority>0.8</priority>\n";
@@ -60,16 +60,16 @@ class GenerateSeoFiles extends Command
         $this->line('✅ sitemap.xml generado.');
 
         // 3. llms.txt
-        $appName = config('app.name', 'Movilidades App');
+        $appName = config('app.name', 'Hoteles App');
         $llms = "# {$appName}\n\n";
-        $llms .= "Bienvenido al archivo llms.txt oficial. Este archivo proporciona un mapa estructurado a los modelos de inteligencia artificial (LLMs) sobre el sistema de reserva y alquiler de movilidades.\n\n";
+        $llms .= "Bienvenido al archivo llms.txt oficial. Este archivo proporciona un mapa estructurado a los modelos de inteligencia artificial (LLMs) sobre el sistema de reserva de hoteles.\n\n";
         $llms .= "## Rutas Principales\n";
         $llms .= '- [Página de Inicio]('.url('/').")\n";
-        $llms .= '- [Catálogo de la Flota]('.url('/flota').")\n";
+        $llms .= '- [Catálogo de Hoteles]('.url('/hoteles').")\n";
         $llms .= '- [Contacto Inmediato]('.url('/contacto').")\n\n";
-        $llms .= "## Catálogo de Vehículos Activos\n";
-        foreach ($movilidades as $m) {
-            $llms .= "- [{$m->nombre}](".url('/movilidad/'.$m->slug).'): '.($m->categoria ?? 'Transporte').' con capacidad para '.($m->capacidad_pasajeros ?? 'varios')." pasajeros.\n";
+        $llms .= "## Catálogo de Hoteles Activos\n";
+        foreach ($hoteles as $h) {
+            $llms .= "- [{$h->nombre}](".url('/hotel/'.$h->slug).'): '.($h->categoria ?? 'Estadía').' con capacidad para '.($h->capacidad_personas ?? 'varios')." huéspedes.\n";
         }
         file_put_contents(public_path('llms.txt'), $llms);
         $this->line('✅ llms.txt generado.');

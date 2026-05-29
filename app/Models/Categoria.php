@@ -36,9 +36,9 @@ class Categoria extends Model
         });
     }
 
-    public function movilidades()
+    public function hoteles()
     {
-        return $this->hasMany(Movilidad::class, 'categoria', 'nombre');
+        return $this->hasMany(Hotel::class, 'categoria', 'nombre');
     }
 
     public function scopeActivas($query)

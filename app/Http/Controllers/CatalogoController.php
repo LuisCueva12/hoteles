@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Marca;
 use App\Models\Modalidad;
-use App\Models\Movilidad;
-use App\Models\Ubicacion;
+use App\Models\Hotel;
+use App\Models\Destino;
 use DateTimeInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -32,41 +32,41 @@ class CatalogoController extends Controller
         return 0;
     }
 
-    private function ubicacionesExplorarCacheKey(): string
+    private function destinosExplorarCacheKey(): string
     {
-        $ubicacionesVersion = (string) $this->toTimestamp(Ubicacion::max('updated_at'));
+        $destinosVersion = (string) $this->toTimestamp(Destino::max('updated_at'));
 
-        return "catalogo:ubicaciones:explorar:v1:{$ubicacionesVersion}";
+        return "catalogo:destinos:explorar:v1:{$destinosVersion}";
     }
 
-    private function getUbicacionesExplorar()
+    private function getDestinosExplorar()
     {
-        return Cache::remember($this->ubicacionesExplorarCacheKey(), now()->addMinutes(15), function () {
-            return Ubicacion::where('activo', true)
+        return Cache::remember($this->destinosExplorarCacheKey(), now()->addMinutes(15), function () {
+            return Destino::where('activo', true)
                 ->orderBy('nombre')
                 ->limit(6)
-                ->get(['id', 'nombre', 'slug', 'ruta_imagen']);
+                ->get(['id', 'nombre', 'slug', 'imagen_url']);
         });
     }
 
     private function filtrosCacheKey(): string
     {
-        $ubicacionesVersion = (string) $this->toTimestamp(Ubicacion::max('updated_at'));
-        $movilidadesVersion = (string) $this->toTimestamp(Movilidad::max('updated_at'));
-        $pivotVersion = (string) $this->toTimestamp(DB::table('movilidad_ubicacion')->max('updated_at'));
+        $destinosVersion = (string) $this->toTimestamp(Destino::max('updated_at'));
+        $hotelesVersion = (string) $this->toTimestamp(Hotel::max('updated_at'));
+        $pivotVersion = (string) $this->toTimestamp(DB::table('hotel_destino')->max('updated_at'));
 
-        return "catalogo:filtros:activos:v3:{$ubicacionesVersion}:{$movilidadesVersion}:{$pivotVersion}";
+        return "catalogo:filtros:activos:v3:{$destinosVersion}:{$hotelesVersion}:{$pivotVersion}";
     }
 
     private function getFiltros()
     {
         return Cache::remember($this->filtrosCacheKey(), now()->addMinutes(15), function () {
-            $capacidadMax = (int) Movilidad::where('activo', true)->max('capacidad_pasajeros');
+            $capacidadMax = (int) Hotel::where('activo', true)->max('capacidad_personas');
 
             return [
-                'ubicaciones' => Ubicacion::where('activo', true)
+                'destinos' => Destino::where('activo', true)
                     ->orderBy('nombre')
-                    ->get(['id', 'nombre', 'slug', 'ruta_imagen']),
+                    ->get(['id', 'nombre', 'slug', 'imagen_url']),
 
                 'marcas' => Marca::where('activo', true)
                     ->orderBy('nombre')
@@ -76,10 +76,10 @@ class CatalogoController extends Controller
                     ->orderBy('orden')
                     ->pluck('nombre'),
 
-                'pasajeros_min_opciones' => Movilidad::where('activo', true)
+                'personas_min_opciones' => Hotel::where('activo', true)
                     ->distinct()
-                    ->orderBy('capacidad_pasajeros')
-                    ->pluck('capacidad_pasajeros')
+                    ->orderBy('capacidad_personas')
+                    ->pluck('capacidad_personas')
                     ->unique()
                     ->sort()
                     ->values(),
@@ -88,7 +88,7 @@ class CatalogoController extends Controller
                     ->orderBy('nombre')
                     ->get(['id', 'nombre', 'slug']),
 
-                'capacidad_max_flota' => max(1, $capacidadMax ?: 1),
+                'capacidad_max_hoteles' => max(1, $capacidadMax ?: 1),
             ];
         });
     }
@@ -103,47 +103,47 @@ class CatalogoController extends Controller
     public function inicio()
     {
         $filtros = $this->getFiltros();
-        $ubicacionesExplorar = $this->getUbicacionesExplorar();
+        $destinosExplorar = $this->getDestinosExplorar();
 
-        $movilidades = Movilidad::select([
+        $hoteles = Hotel::select([
             'id',
             'nombre',
             'slug',
             'marca_id',
             'categoria',
             'precio_base',
-            'capacidad_pasajeros',
+            'capacidad_personas',
             'ruta_imagen',
             'activo',
         ])
-            ->with(['marca:id,nombre,logo', 'ubicaciones:id,nombre', 'modalidades:id,nombre,slug', 'caracteristicas:id,nombre'])
+            ->with(['marca:id,nombre,logo', 'destinos:id,nombre', 'modalidades:id,nombre,slug', 'caracteristicas:id,nombre'])
             ->where('activo', true)
             ->latest()
             ->take(8)
             ->get();
 
-        return view('pages.home', compact('filtros', 'movilidades', 'ubicacionesExplorar'));
+        return view('pages.home', compact('filtros', 'hoteles', 'destinosExplorar'));
     }
 
-    public function flota(Request $request)
+    public function catalogo(Request $request)
     {
-        $query = Movilidad::select([
+        $query = Hotel::select([
             'id',
             'nombre',
             'slug',
             'marca_id',
             'categoria',
             'precio_base',
-            'capacidad_pasajeros',
+            'capacidad_personas',
             'ruta_imagen',
             'activo',
         ])
-            ->with(['marca:id,nombre,logo', 'ubicaciones:id,nombre', 'modalidades:id,nombre,slug', 'caracteristicas:id,nombre'])
+            ->with(['marca:id,nombre,logo', 'destinos:id,nombre', 'modalidades:id,nombre,slug', 'caracteristicas:id,nombre'])
             ->where('activo', true);
 
-        if ($request->filled('ubicacion')) {
-            $query->whereHas('ubicaciones', function ($q) use ($request) {
-                $q->where('ubicaciones.id', $request->ubicacion);
+        if ($request->filled('destino')) {
+            $query->whereHas('destinos', function ($q) use ($request) {
+                $q->where('destinos.id', $request->destino);
             });
         }
 
@@ -162,15 +162,15 @@ class CatalogoController extends Controller
         }
 
         $filtros = $this->getFiltros();
-        $capMaxFlota = max(1, (int) ($filtros['capacidad_max_flota'] ?? 1));
+        $capMaxHoteles = max(1, (int) ($filtros['capacidad_max_hoteles'] ?? 1));
 
-        $minPax = $request->filled('pasajeros_min') ? (int) $request->pasajeros_min : null;
-        $maxPax = $request->filled('pasajeros_max') ? (int) $request->pasajeros_max : null;
+        $minPax = $request->filled('personas_min') ? (int) $request->personas_min : null;
+        $maxPax = $request->filled('personas_max') ? (int) $request->personas_max : null;
 
-        if ($minPax !== null && ($minPax < 1 || $minPax > $capMaxFlota)) {
+        if ($minPax !== null && ($minPax < 1 || $minPax > $capMaxHoteles)) {
             $minPax = null;
         }
-        if ($maxPax !== null && ($maxPax < 1 || $maxPax > $capMaxFlota)) {
+        if ($maxPax !== null && ($maxPax < 1 || $maxPax > $capMaxHoteles)) {
             $maxPax = null;
         }
         if ($minPax !== null && $maxPax !== null && $minPax > $maxPax) {
@@ -180,45 +180,44 @@ class CatalogoController extends Controller
         if ($minPax !== null && $minPax <= 1) {
             $minPax = null;
         }
-        if ($maxPax !== null && $maxPax >= $capMaxFlota) {
+        if ($maxPax !== null && $maxPax >= $capMaxHoteles) {
             $maxPax = null;
         }
 
         if ($minPax !== null) {
-            $query->where('capacidad_pasajeros', '>=', $minPax);
+            $query->where('capacidad_personas', '>=', $minPax);
         }
         if ($maxPax !== null) {
-            $query->where('capacidad_pasajeros', '<=', $maxPax);
+            $query->where('capacidad_personas', '<=', $maxPax);
         }
 
         $orden = $this->ordenValido($request->query('orden'));
         match ($orden) {
             'precio_asc' => $query->orderBy('precio_base', 'asc')->orderBy('nombre'),
             'precio_desc' => $query->orderBy('precio_base', 'desc')->orderBy('nombre'),
-            'capacidad_desc' => $query->orderBy('capacidad_pasajeros', 'desc')->orderBy('nombre'),
-            default => $query->latest('movilidades.id'),
+            'capacidad_desc' => $query->orderBy('capacidad_personas', 'desc')->orderBy('nombre'),
+            default => $query->latest('hoteles.id'),
         };
 
-        $movilidades = $query->paginate(10)->withQueryString();
+        $hoteles = $query->paginate(10)->withQueryString();
 
-        return view('pages.flota.index', compact('movilidades', 'filtros', 'orden'));
+        return view('pages.hoteles-catalogo.index', compact('hoteles', 'filtros', 'orden'));
     }
 
-    public function detalle(Movilidad $movilidad)
+    public function detalle(Hotel $hotel)
     {
-        if (! $movilidad->activo) {
+        if (! $hotel->activo) {
             abort(404);
         }
 
-        $movilidad->load([
+        $hotel->load([
             'marca:id,nombre,logo',
-            'ubicaciones:id,nombre',
-            'rutas:id,nombre,origen,destino,activo',
+            'destinos:id,nombre',
             'modalidades:id,nombre,slug',
             'caracteristicas:id,nombre',
         ]);
 
-        return view('pages.movilidades.show', compact('movilidad'));
+        return view('pages.hoteles.show', compact('hotel'));
     }
 
     public function contacto()

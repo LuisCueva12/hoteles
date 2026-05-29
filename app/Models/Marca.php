@@ -29,9 +29,9 @@ class Marca extends Model
         });
     }
 
-    public function movilidades(): HasMany
+    public function hoteles(): HasMany
     {
-        return $this->hasMany(Movilidad::class);
+        return $this->hasMany(Hotel::class, 'marca_id');
     }
 
     public function getLogoUrlAttribute(): string

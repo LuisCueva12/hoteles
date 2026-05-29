@@ -1,19 +1,14 @@
 # Adventur
 
-Bienvenido al archivo llms.txt oficial. Este archivo proporciona un mapa estructurado a los modelos de inteligencia artificial (LLMs) sobre el sistema de reserva y alquiler de movilidades.
+Bienvenido al archivo llms.txt oficial. Este archivo proporciona un mapa estructurado a los modelos de inteligencia artificial (LLMs) sobre el sistema de reserva de hoteles.
 
 ## Rutas Principales
 - [Página de Inicio](https://movilidades.adventur.pe)
-- [Catálogo de la Flota](https://movilidades.adventur.pe/flota)
+- [Catálogo de Hoteles](https://movilidades.adventur.pe/hoteles)
 - [Contacto Inmediato](https://movilidades.adventur.pe/contacto)
 
-## Catálogo de Vehículos Activos
-- [Avante](https://movilidades.adventur.pe/movilidad/avante): Viajes Escolares con capacidad para 5 pasajeros.
-- [K5](https://movilidades.adventur.pe/movilidad/k5): Sedán con capacidad para 5 pasajeros.
-- [K5 Advanced](https://movilidades.adventur.pe/movilidad/k5-advanced): Sedán con capacidad para 5 pasajeros.
-- [K3](https://movilidades.adventur.pe/movilidad/k3): Compact con capacidad para 5 pasajeros.
-- [EV6](https://movilidades.adventur.pe/movilidad/ev6): SUV Premium con capacidad para 5 pasajeros.
-- [Morning](https://movilidades.adventur.pe/movilidad/morning): Mini con capacidad para 4 pasajeros.
-- [Hiace Commuter](https://movilidades.adventur.pe/movilidad/hiace-commuter): Van de Pasajeros con capacidad para 14 pasajeros.
-- [Coaster](https://movilidades.adventur.pe/movilidad/coaster): Minibús Turístico con capacidad para 26 pasajeros.
-- [Land Cruiser 200](https://movilidades.adventur.pe/movilidad/land-cruiser-200): SUV Premium con capacidad para 8 pasajeros.
+## Catálogo de Hoteles Activos
+- [Casa Andina Premium Cusco](https://movilidades.adventur.pe/hotel/casa-andina-premium-cusco): 5 Estrellas con capacidad para 4 huéspedes.
+- [Casa Andina Standard Cajamarca](https://movilidades.adventur.pe/hotel/casa-andina-standard-cajamarca): 3 Estrellas con capacidad para 3 huéspedes.
+- [Hilton Garden Inn Lima Miraflores](https://movilidades.adventur.pe/hotel/hilton-garden-inn-lima-miraflores): 4 Estrellas con capacidad para 2 huéspedes.
+- [Sonesta Posadas del Inca Cusco](https://movilidades.adventur.pe/hotel/sonesta-posadas-del-inca-cusco): 4 Estrellas con capacidad para 3 huéspedes.

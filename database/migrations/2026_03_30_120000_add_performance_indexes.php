@@ -15,23 +15,15 @@ return new class extends Migration
             $table->index(['estado', 'created_at']);
         });
 
-        Schema::table('movilidad_ubicacion', function (Blueprint $table) {
-            $table->index('ubicacion_id');
-        });
-
-        Schema::table('movilidad_ruta', function (Blueprint $table) {
-            $table->index('ruta_id');
+        Schema::table('hotel_destino', function (Blueprint $table) {
+            $table->index('destino_id');
         });
     }
 
     public function down(): void
     {
-        Schema::table('movilidad_ruta', function (Blueprint $table) {
-            $table->dropIndex(['ruta_id']);
-        });
-
-        Schema::table('movilidad_ubicacion', function (Blueprint $table) {
-            $table->dropIndex(['ubicacion_id']);
+        Schema::table('hotel_destino', function (Blueprint $table) {
+            $table->dropIndex(['destino_id']);
         });
 
         Schema::table('reservas', function (Blueprint $table) {

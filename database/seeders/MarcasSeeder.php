@@ -10,20 +10,18 @@ class MarcasSeeder extends Seeder
     public function run(): void
     {
         $marcas = [
-            ['nombre' => 'Toyota', 'slug' => 'toyota', 'activo' => true],
-            ['nombre' => 'Hyundai', 'slug' => 'hyundai', 'activo' => true],
-            ['nombre' => 'Mercedes-Benz', 'slug' => 'mercedes-benz', 'activo' => true],
-            ['nombre' => 'Volkswagen', 'slug' => 'volkswagen', 'activo' => true],
-            ['nombre' => 'Nissan', 'slug' => 'nissan', 'activo' => true],
-            ['nombre' => 'Chevrolet', 'slug' => 'chevrolet', 'activo' => true],
-            ['nombre' => 'Ford', 'slug' => 'ford', 'activo' => true],
-            ['nombre' => 'Kia', 'slug' => 'kia', 'activo' => true],
-            ['nombre' => 'Mazda', 'slug' => 'mazda', 'activo' => true],
-            ['nombre' => 'Honda', 'slug' => 'honda', 'activo' => true],
+            ['nombre' => 'Casa Andina', 'slug' => 'casa-andina', 'activo' => true],
+            ['nombre' => 'Hilton Hotels', 'slug' => 'hilton', 'activo' => true],
+            ['nombre' => 'Marriott International', 'slug' => 'marriott', 'activo' => true],
+            ['nombre' => 'Sheraton Hotels', 'slug' => 'sheraton', 'activo' => true],
+            ['nombre' => 'Decameron Resorts', 'slug' => 'decameron', 'activo' => true],
+            ['nombre' => 'Costa del Sol', 'slug' => 'costa-del-sol', 'activo' => true],
+            ['nombre' => 'Aranwa Hotels', 'slug' => 'aranwa', 'activo' => true],
+            ['nombre' => 'Sonesta Hotels', 'slug' => 'sonesta', 'activo' => true],
         ];
 
         foreach ($marcas as $marca) {
-            Marca::create($marca);
+            Marca::firstOrCreate(['slug' => $marca['slug']], $marca);
         }
     }
 }

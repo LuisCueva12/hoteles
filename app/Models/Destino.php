@@ -6,13 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Str;
 
-class Modalidad extends Model
+class Destino extends Model
 {
-    protected $table = 'modalidades';
+    protected $table = 'destinos';
 
     protected $fillable = [
         'nombre',
         'slug',
+        'departamento',
+        'tipo',
+        'descripcion',
+        'imagen_url',
         'activo',
     ];
 
@@ -23,15 +27,17 @@ class Modalidad extends Model
     protected static function boot()
     {
         parent::boot();
-        static::creating(function ($modalidad) {
-            if (empty($modalidad->slug)) {
-                $modalidad->slug = Str::slug($modalidad->nombre, '_');
+        static::creating(function ($destino) {
+            if (empty($destino->slug)) {
+                $destino->slug = Str::slug($destino->nombre);
             }
         });
     }
 
     public function hoteles(): BelongsToMany
     {
-        return $this->belongsToMany(Hotel::class, 'hotel_modalidad', 'modalidad_id', 'hotel_id')->withTimestamps();
+        return $this->belongsToMany(Hotel::class, 'hotel_destino', 'destino_id', 'hotel_id')
+            ->withPivot('precio_ajuste')
+            ->withTimestamps();
     }
 }
