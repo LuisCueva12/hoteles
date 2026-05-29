@@ -1,0 +1,30 @@
+---
+description: Skill Maestra: Estándares de Arquitectura, Código Limpio y Precisión Quirúrgica
+alwaysApply: true
+---
+
+# 🏆 Reglas Maestras de Desarrollo
+
+Este es el estándar principal para cualquier modificación. Se requiere un enfoque moderno, definido y extremadamente preciso para mantener la robustez del sistema.
+
+## 1. Precisión Quirúrgica y Minimalismo
+- **Cero cambios extensos:** No realices modificaciones masivas. El impacto debe ser localizado y estrictamente necesario.
+- **Sin refactorizaciones globales:** No intentes mejorar todo el archivo; enfócate únicamente en las secciones específicas relacionadas con la tarea.
+- **Distribución puntual de código:** Solo entrega el bloque de código necesario, evitando ruidos visuales o reescrituras completas de archivos funcionales.
+
+## 2. Ejecución y Comandos
+- **Control de Terminal:** No ejecutes comandos de consola (terminal) a menos que sea estrictamente necesario para la tarea o el usuario lo pida. El foco es la implementación de código moderno y bien definido.
+
+## 3. Arquitectura y Código Limpio (Moderno y Optimizado)
+- **Implementación Moderna y Optimizada:** Utiliza las mejores prácticas actuales. Prioriza la eficiencia en la ejecución sin comprometer la legibilidad.
+- **Composición y Reutilización:** Prefiere la composición y la reutilización de código (principios DRY) antes que la duplicación innecesaria.
+- **Interfaces y Contratos:** Asegura que las interfaces y contratos sean explícitos, consistentes y bien definidos entre módulos.
+- **Separación de Capas:** Respeta la división entre Presentación, Aplicación, Dominio e Infraestructura. Mantén la lógica fuera de controladores y vistas.
+- **Semántica y SRP:** Usa nombres que expresen intención de negocio. Cada función o clase debe tener una única responsabilidad clara y un tamaño acotado.
+- **Retorno Temprano y Simplicidad:** Minimiza el anidamiento para mejorar la legibilidad. Prioriza siempre el código simple sobre el complejo.
+
+## 4. Estabilidad, Estilo y No Regresiones
+- **Consistencia de Estilo:** Mantén total consistencia con las convenciones de estilo y patrones de diseño ya presentes en todo el proyecto.
+- **Protección de Funciones Existentes:** Prohibido romper lógica funcional. Valida siempre el impacto antes de cualquier modificación.
+- **Validación Final:** Antes de terminar, confirma que el flujo sea funcional, legible y coherente con la arquitectura existente.
+- **Auto-documentación y Limpieza:** El código debe explicar el "por qué". No agregues comentarios redundantes. Elimina código muerto, ramas innecesarias y validaciones redundantes de forma segura.

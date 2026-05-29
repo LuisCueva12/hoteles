@@ -1,0 +1,261 @@
+@import "tailwindcss";
+@import "@fontsource/montserrat/400.css";
+@import "@fontsource/montserrat/500.css";
+@import "@fontsource/montserrat/600.css";
+@import "@fontsource/montserrat/700.css";
+@import "@fontsource/montserrat/800.css";
+
+@theme {
+    --color-brand-blue: #001f3f;
+    --color-brand-yellow: #ffd600;
+    --color-ink: #0a1628;
+    --color-ink-strong: #001f3f;
+
+    --font-sans: "Montserrat", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+    --text-scale-body: 1rem;
+    --text-scale-body-line: 1.625;
+    --text-scale-lead: 1.0625rem;
+    --text-scale-lead-line: 1.6;
+    --text-scale-ui: 0.9375rem;
+    --text-scale-ui-line: 1.5;
+    --text-scale-label: 0.75rem;
+    --text-scale-label-line: 1.25;
+    --text-scale-caption: 0.8125rem;
+    --text-scale-caption-line: 1.45;
+    --text-scale-chip: 0.8125rem;
+    --text-scale-card-title: 1.125rem;
+    --text-scale-card-title-line: 1.35;
+    --text-scale-section: 1.8rem;
+    --text-scale-section-md: 2rem;
+    --text-scale-section-line: 1.2;
+    --text-scale-hero-eyebrow: 0.8125rem;
+    --text-scale-hero-eyebrow-md: 0.875rem;
+    --text-scale-nav-meta: 0.6875rem;
+    --font-weight-body: 500;
+    --font-weight-muted: 500;
+    --font-weight-lead: 500;
+}
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: var(--font-sans);
+        font-size: var(--text-scale-body);
+        font-weight: var(--font-weight-body);
+        line-height: var(--text-scale-body-line);
+        background-color: #f8fafc;
+        color: var(--color-ink);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: var(--font-sans);
+    }
+}
+
+@layer utilities {
+    .section-title {
+        font-family: var(--font-sans);
+        font-size: var(--text-scale-section);
+        font-weight: 700;
+        line-height: var(--text-scale-section-line);
+        color: rgb(0, 31, 63);
+        text-align: center;
+    }
+
+    @media (min-width: 768px) {
+        .section-title {
+            font-size: var(--text-scale-section-md);
+        }
+    }
+
+    .text-body-16 {
+        font-family: var(--font-sans);
+        font-size: var(--text-scale-body);
+        font-weight: var(--font-weight-body);
+        line-height: var(--text-scale-body-line);
+    }
+
+    .text-lead {
+        font-family: var(--font-sans);
+        font-size: var(--text-scale-lead);
+        font-weight: var(--font-weight-lead);
+        line-height: var(--text-scale-lead-line);
+    }
+
+    .text-ui {
+        font-family: var(--font-sans);
+        font-size: var(--text-scale-ui);
+        font-weight: 600;
+        line-height: var(--text-scale-ui-line);
+    }
+
+    .text-caption {
+        font-family: var(--font-sans);
+        font-size: var(--text-scale-caption);
+        font-weight: 600;
+        line-height: var(--text-scale-caption-line);
+    }
+
+    .text-label-upper {
+        font-family: var(--font-sans);
+        font-size: var(--text-scale-label);
+        font-weight: 700;
+        line-height: var(--text-scale-label-line);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+    }
+
+    .text-nav-meta {
+        font-family: var(--font-sans);
+        font-size: var(--text-scale-nav-meta);
+        font-weight: 700;
+        line-height: 1.2;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+    }
+
+    .text-card-title {
+        font-family: var(--font-sans);
+        font-size: var(--text-scale-card-title);
+        font-weight: 700;
+        line-height: var(--text-scale-card-title-line);
+    }
+
+    .text-chip {
+        font-family: var(--font-sans);
+        font-size: var(--text-scale-chip);
+        font-weight: 700;
+        line-height: 1.3;
+    }
+
+    .text-hero-eyebrow {
+        font-family: var(--font-sans);
+        font-size: var(--text-scale-hero-eyebrow);
+        font-weight: 700;
+        line-height: 1.3;
+        letter-spacing: 0.02em;
+    }
+
+    @media (min-width: 640px) {
+        .text-hero-eyebrow {
+            font-size: var(--text-scale-hero-eyebrow-md);
+        }
+    }
+
+    .menu-text {
+        font-family: var(--font-sans);
+        font-size: var(--text-scale-ui);
+        font-weight: 600;
+        line-height: 1.25;
+        text-align: start;
+    }
+
+    .text-ink {
+        color: var(--color-ink);
+    }
+
+    .text-ink-strong {
+        color: var(--color-ink-strong);
+    }
+
+    .vehiculo-card-stat {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 0.75rem;
+        padding: 0.75rem 0.25rem;
+        border: 1px solid color-mix(in srgb, var(--color-brand-blue) 18%, white);
+        background-color: color-mix(in srgb, var(--color-brand-blue) 5%, white);
+    }
+
+    .vehiculo-card-stat__icon {
+        display: flex;
+        height: 2.25rem;
+        width: 2.25rem;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0.5rem;
+        background-color: color-mix(in srgb, var(--color-brand-yellow) 28%, white);
+        color: var(--color-brand-blue);
+        margin-bottom: 0.5rem;
+    }
+
+    .faq-item details {
+        border-radius: 1rem;
+        border: 1px solid rgb(241 245 249);
+        background-color: white;
+        overflow: hidden;
+    }
+
+    .faq-item summary {
+        font-family: var(--font-sans);
+        font-size: var(--text-scale-body);
+        font-weight: 600;
+        line-height: var(--text-scale-body-line);
+        cursor: pointer;
+        list-style: none;
+        padding: 1rem 1.25rem;
+        padding-right: 2.75rem;
+        position: relative;
+        color: rgb(0, 31, 63);
+    }
+
+    .faq-item summary::-webkit-details-marker {
+        display: none;
+    }
+
+    .faq-item summary::after {
+        content: "";
+        position: absolute;
+        right: 1.25rem;
+        top: 50%;
+        width: 0.5rem;
+        height: 0.5rem;
+        border-right: 2px solid var(--color-brand-yellow);
+        border-bottom: 2px solid var(--color-brand-yellow);
+        transform: translateY(-65%) rotate(45deg);
+        transition: transform 0.2s ease;
+    }
+
+    .faq-item details[open] summary::after {
+        transform: translateY(-25%) rotate(-135deg);
+    }
+
+    .faq-item .faq-answer {
+        font-family: var(--font-sans);
+        font-size: var(--text-scale-body);
+        font-weight: var(--font-weight-muted);
+        line-height: var(--text-scale-body-line);
+        color: var(--color-ink);
+        padding: 0 1.25rem 1.25rem;
+        margin: 0;
+        border-top: 1px solid rgb(241 245 249);
+        padding-top: 1rem;
+    }
+
+    /* GTranslate Hidden Widget */
+    .goog-te-banner-frame.skiptranslate,
+    .goog-te-gadget-icon,
+    .goog-te-gadget-simple,
+    #goog-gt-tt, 
+    .goog-te-balloon-frame,
+    div#goog-gt-,
+    .skiptranslate iframe,
+    #google_translate_element { 
+        display: none !important; 
+        visibility: hidden !important; 
+        opacity: 0 !important;
+    }
+    body { top: 0px !important; position: static !important; }
+    .goog-text-highlight { background-color: transparent !important; box-shadow: none !important; }
+    html { margin-top: 0px !important; height: auto !important; }
+}

@@ -1,0 +1,49 @@
+name: Deploy Laravel a SiteGround Movilidades Laravel 12.54.1
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build assets
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22.22.0"
+          cache: npm
+      - run: npm ci && npm run build
+
+      - name: Sync files to server
+        uses: easingthemes/ssh-deploy@main
+        with:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          REMOTE_HOST: ${{ secrets.HOST }}
+          REMOTE_USER: ${{ secrets.USERNAME }}
+          REMOTE_PORT: ${{ secrets.PORT }}
+          TARGET: www/movilidades.adventur.pe/public_html/
+          EXCLUDE: "/vendor/, /node_modules/, /.git/, /.env, /.htaccess, /public/storage/"
+
+      - name: Composer, migrations and cache
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          port: ${{ secrets.PORT }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script_stop: true
+          script: |
+            cd www/movilidades.adventur.pe/public_html
+            php82 /usr/local/bin/composer.phar install --optimize-autoloader --no-dev --no-interaction
+            chmod -R 775 storage bootstrap/cache
+            php82 artisan migrate --force
+            php82 artisan optimize:clear
+            php82 artisan optimize
