@@ -5,25 +5,25 @@
 
             <div>
                 <h2 id="nosotros-titulo" class="section-title text-left leading-tight tracking-tight mb-5">
-                    <span class="text-brand-blue">Viaja con seguridad</span>
-                    <span class="text-brand-yellow"> y el confort que mereces</span>
+                    <span class="text-brand-blue">Hospédate con confort</span>
+                    <span class="text-brand-yellow"> y la atención que mereces</span>
                 </h2>
                 <p class="text-ink text-body-16 font-medium mb-8">
-                    En Cajamarca y en todo el Perú ofrecemos alquiler de movilidades y traslados con la misma calidad que esperas de un operador nacional: conductores profesionales, flota moderna y atención coordinada para cada viaje.
+                    En Cajamarca y en todo el Perú ofrecemos los mejores hoteles verificados, con la misma calidad que esperas de una plataforma nacional: alojamiento cómodo, precios transparentes y atención personalizada para cada estadía.
                 </p>
 
                 @php
                 $ventajas = [
                     [
-                        'texto' => 'Conductores verificados con licencia vigente y experiencia comprobada',
+                        'texto' => 'Hoteles verificados con habitaciones cómodas y atención de primera',
                         'icono' => 'shield-check',
                     ],
                     [
-                        'texto' => 'Vehículos modernos con mantenimiento preventivo y SOAT al día',
-                        'icono' => 'car',
+                        'texto' => 'Amplia variedad: 3, 4 y 5 estrellas, boutique y resorts en todo el Perú',
+                        'icono' => 'building-2',
                     ],
                     [
-                        'texto' => 'Encuentra tu movilidad ideal, disponible las 24 horas',
+                        'texto' => 'Reserva fácil y rápida, disponible las 24 horas por WhatsApp',
                         'icono' => 'clock',
                     ],
                 ];
@@ -45,7 +45,7 @@
                 <div class="relative min-h-[460px] overflow-hidden rounded-3xl shadow-2xl">
                     <img
                         src="{{ asset('img/viaje-seguro.webp') }}"
-                        alt="Movilidad privada en carretera peruana: transporte seguro y confortable para alquiler con chofer en Cajamarca y todo el Perú con {{ config('app.name') }}." title="Movilidad privada en carretera peruana: transporte seguro y confortable para alquiler con chofer en Cajamarca y todo el Perú con {{ config('app.name') }}."
+                        alt="Hotel con vistas privilegiadas en el Perú: alojamiento cómodo y verificado para tu estadía con {{ config('app.name') }}." title="Hotel con vistas privilegiadas en el Perú: alojamiento cómodo y verificado para tu estadía con {{ config('app.name') }}."
                         width="1280"
                         height="720"
                         class="absolute inset-0 h-full w-full object-cover object-center"

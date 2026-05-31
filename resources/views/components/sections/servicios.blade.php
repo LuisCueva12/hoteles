@@ -3,11 +3,11 @@
 
         <header class="text-center max-w-2xl mx-auto mb-14">
             <h2 id="servicios-titulo" class="section-title leading-tight tracking-tight mb-4">
-                <span class="text-brand-blue">Servicios de movilidad</span>
+                <span class="text-brand-blue">Servicios de alojamiento</span>
                 <span class="text-brand-yellow"> en Cajamarca y todo el Perú</span>
             </h2>
             <p class="text-ink text-body-16 font-medium">
-                Traslados al aeropuerto, viajes interprovinciales, transporte corporativo y más. Misma exigencia de puntualidad y seguridad en destino o en ruta.
+                Reservas de hotel, paquetes corporativos, estadías familiares y más. La misma calidad y atención personalizada en cada destino del Perú.
             </p>
         </header>
 
@@ -16,39 +16,39 @@
             @php
             $servicios = [
                 [
-                    'titulo'      => 'Traslado al aeropuerto',
-                    'descripcion' => 'Llegamos a tiempo para llevarte o recogerte del Aeropuerto Jorge Chávez. Puntualidad garantizada las 24 horas.',
-                    'etiquetas'   => ['Disponible 24/7', 'Lima → AEP'],
-                    'icono'       => 'plane-takeoff',
+                    'titulo'      => 'Reservas de hotel',
+                    'descripcion' => 'Encuentra y reserva tu alojamiento ideal en segundos. Habitaciones verificadas con disponibilidad en tiempo real.',
+                    'etiquetas'   => ['Confirmación inmediata', 'Mejor precio'],
+                    'icono'       => 'bed-double',
                 ],
                 [
-                    'titulo'      => 'Viajes interprovinciales',
-                    'descripcion' => 'Viaja cómodo a cualquier provincia del Perú. Ica, Cusco, Arequipa, Trujillo y todos los destinos disponibles.',
-                    'etiquetas'   => ['Todo el Perú', 'Con conductor'],
-                    'icono'       => 'route',
-                ],
-                [
-                    'titulo'      => 'Traslado corporativo',
-                    'descripcion' => 'Soluciones de movilidad para empresas: ejecutivos, visitas de clientes y eventos. Con facturación electrónica.',
+                    'titulo'      => 'Hospedaje corporativo',
+                    'descripcion' => 'Alojamiento para ejecutivos, equipos y visitas empresariales. Facturación electrónica y tarifas preferenciales.',
                     'etiquetas'   => ['Empresas', 'Factura'],
                     'icono'       => 'briefcase',
                 ],
                 [
-                    'titulo'      => 'Eventos especiales',
-                    'descripcion' => 'Bodas, quinceañeros, graduaciones, giras. Hacemos tu evento memorable con la mejor flota de vehículos.',
+                    'titulo'      => 'Paquetes familiares',
+                    'descripcion' => 'Habitaciones amplias y ambientes pensados para disfrutar en familia. Opciones con desayuno incluido y amenidades.',
+                    'etiquetas'   => ['Familias', 'Todo incluido'],
+                    'icono'       => 'users',
+                ],
+                [
+                    'titulo'      => 'Eventos y grupos',
+                    'descripcion' => 'Coordinamos alojamiento para bodas, graduaciones, giras y encuentros. Bloques de habitaciones con tarifas especiales.',
                     'etiquetas'   => ['Premium', 'A medida'],
                     'icono'       => 'ticket',
                 ],
                 [
-                    'titulo'      => 'Transporte escolar',
-                    'descripcion' => 'Paseos escolares y excursiones educativas con total seguridad. SOAT vigente y conductores con experiencia en grupos.',
-                    'etiquetas'   => ['Seguro', 'SOAT incluido'],
-                    'icono'       => 'users',
+                    'titulo'      => 'Hoteles de lujo',
+                    'descripcion' => 'Experiencias premium en los mejores resorts y hoteles boutique del Perú. Spa, restaurante gourmet y vistas privilegiadas.',
+                    'etiquetas'   => ['5 Estrellas', 'Boutique'],
+                    'icono'       => 'star',
                 ],
                 [
-                    'titulo'      => 'Conductores verificados y flota moderna',
-                    'descripcion' => 'Conductores certificados con amplia experiencia y vehículos modernos en óptimo estado para viajes seguros y cómodos.',
-                    'etiquetas'   => ['Verificados', 'Flota moderna'],
+                    'titulo'      => 'Hoteles verificados',
+                    'descripcion' => 'Cada hotel es revisado y validado antes de ofrecerlo. Habitaciones cómodas, ubicaciones convenientes y atención directa.',
+                    'etiquetas'   => ['Verificados', 'Garantizados'],
                     'icono'       => 'shield-check',
                 ],
             ];

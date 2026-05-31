@@ -40,9 +40,9 @@ class CaracteristicaResource extends Resource
                     ->label('Slug')
                     ->toggleable(isToggledHiddenByDefault: true),
 
-                TextColumn::make('movilidades_count')
-                    ->label('Vehículos')
-                    ->counts('movilidades')
+                TextColumn::make('hoteles_count')
+                    ->label('Hoteles')
+                    ->counts('hoteles')
                     ->sortable(),
 
                 TextColumn::make('created_at')

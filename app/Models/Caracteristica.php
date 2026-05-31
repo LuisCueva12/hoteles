@@ -25,8 +25,8 @@ class Caracteristica extends Model
         });
     }
 
-    public function movilidades(): BelongsToMany
+    public function hoteles(): BelongsToMany
     {
-        return $this->belongsToMany(Movilidad::class, 'movilidad_caracteristica')->withTimestamps();
+        return $this->belongsToMany(Hotel::class, 'hotel_caracteristica', 'caracteristica_id', 'hotel_id')->withTimestamps();
     }
 }

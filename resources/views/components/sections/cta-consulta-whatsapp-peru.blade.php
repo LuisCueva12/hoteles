@@ -3,13 +3,13 @@
         <div class="flex min-h-[19rem] flex-col overflow-hidden rounded-3xl shadow-[0_20px_50px_rgba(0,31,63,0.12)] ring-1 ring-black/5 lg:min-h-[20rem] lg:flex-row lg:items-stretch">
             <div class="flex w-full flex-col justify-center gap-5 bg-brand-blue px-8 py-10 text-left text-white lg:w-[42%] lg:shrink-0 lg:basis-[42%] lg:px-10 xl:px-12 xl:py-14">
                 <h2 id="cta-consulta-titulo" class="text-xl font-extrabold leading-snug tracking-tight text-white md:text-2xl">
-                    ¿No encuentras el vehículo que necesitas?
+                    ¿No encuentras el hotel que necesitas?
                 </h2>
                 <p class="text-[0.9375rem] font-medium leading-relaxed text-white/90 md:text-base">
-                    Tenemos múltiples opciones de vehículos ideales para cada necesidad
+                    Tenemos múltiples opciones de alojamiento ideales para cada tipo de viaje
                 </p>
                 <a
-                    href="{{ $whatsappReservaUrl === '#' ? route('flota') : $whatsappReservaUrl }}"
+                    href="{{ $whatsappReservaUrl === '#' ? route('hoteles.catalogo') : $whatsappReservaUrl }}"
                     @if($whatsappReservaUrl !== '#') target="_blank" rel="noopener noreferrer" @endif
                     class="inline-flex w-fit items-center justify-center gap-2.5 self-start rounded-full bg-brand-yellow px-7 py-3.5 text-sm font-semibold tracking-normal text-ink shadow-md transition hover:brightness-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-yellow focus-visible:ring-offset-2 focus-visible:ring-offset-brand-blue"
                 >
@@ -23,7 +23,7 @@
             <div class="relative isolate min-h-[17rem] w-full flex-1 lg:min-h-0">
                 <img
                     src="{{ asset('img/cta-descubre-peru.png') }}"
-                    alt="Rutas y paisajes del Perú para viajar en movilidad alquilada con chofer: consulta disponibilidad por WhatsApp con {{ config('app.name') }} en Cajamarca y todo el país." title="Rutas y paisajes del Perú para viajar en movilidad alquilada con chofer: consulta disponibilidad por WhatsApp con {{ config('app.name') }} en Cajamarca y todo el país."
+                    alt="Destinos y hoteles del Perú: consulta disponibilidad y reserva tu alojamiento por WhatsApp con {{ config('app.name') }} en Cajamarca y todo el país." title="Destinos y hoteles del Perú: consulta disponibilidad y reserva tu alojamiento por WhatsApp con {{ config('app.name') }} en Cajamarca y todo el país."
                     width="1280"
                     height="720"
                     class="absolute inset-0 h-full w-full object-cover object-center"

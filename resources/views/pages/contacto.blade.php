@@ -1,20 +1,17 @@
 <x-layouts.web title="Contacto - {{ config('app.name') }}"
-    description="Ponte en contacto con nosotros para alquiler de movilidades, traslados y servicios turísticos en Cajamarca y todo el Perú.">
+    description="Ponte en contacto con nosotros para reservas de hotel, consultas de alojamiento y servicios turísticos en Cajamarca y todo el Perú.">
 
-    <section class="relative isolate w-full overflow-hidden min-h-[260px] bg-brand-blue flex items-center">
-        <div class="absolute inset-0 z-0">
-            <img src="{{ asset('img/viaje-seguro.webp') }}" alt="Contacto Adventur" title="Contacto Adventur" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-b from-brand-blue/80 via-brand-blue/70 to-brand-blue/85"
-                aria-hidden="true"></div>
-        </div>
+    <section class="relative isolate w-full overflow-hidden bg-brand-blue -mt-[108px] md:-mt-[128px] min-h-[280px] md:min-h-[300px] flex items-end">
+        <img src="{{ asset('img/hero-principal-2.webp') }}" alt="Contacto {{ config('app.name') }}"
+            class="absolute inset-0 w-full h-full object-cover object-center">
+        <div class="absolute inset-0 bg-gradient-to-t from-brand-blue/90 via-brand-blue/55 to-brand-blue/30" aria-hidden="true"></div>
 
-        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 text-center">
-            <h1
-                class="text-3xl sm:text-4xl md:text-6xl font-extrabold leading-tight tracking-tight mb-4 max-w-4xl mx-auto capitalize">
-                <span class="text-white">Ponte En</span> <span class="text-brand-yellow">conctacto</span>
+        <div class="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8 text-center pb-10 pt-[140px] md:pt-[160px]">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight tracking-tight mb-3">
+                <span class="text-white">Ponte en</span> <span class="text-brand-yellow">contacto</span>
             </h1>
-            <p class="text-white/85 text-base md:text-lg max-w-2xl mx-auto font-medium">
-                Escríbenos y recibe una cotización personalizada en minutos.
+            <p class="text-white/75 text-sm font-medium">
+                Escríbenos y recibe una respuesta personalizada en minutos.
             </p>
         </div>
     </section>
@@ -63,8 +60,9 @@
                                     <select id="subject" name="subject" required
                                         class="w-full px-5 py-3 bg-slate-50 border border-slate-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-blue/10 focus:border-brand-blue transition-all text-slate-700 text-sm font-semibold appearance-none cursor-pointer">
                                         <option value="">Selecciona</option>
-                                        <option value="cotizacion">Cotización</option>
-                                        <option value="viaje-escolar">Viajes Escolares</option>
+                                        <option value="reserva-hotel">Reserva de Hotel</option>
+                                        <option value="hospedaje-corporativo">Hospedaje Corporativo</option>
+                                        <option value="grupos-eventos">Grupos y Eventos</option>
                                         <option value="turistico">Turismo</option>
                                     </select>
                                     <div
@@ -112,8 +110,8 @@
                                             class="w-8 h-8 bg-white/10 rounded-lg flex items-center justify-center shrink-0">
                                             <x-dynamic-component :component="'lucide-mail'" class="w-4 h-4 text-brand-yellow" />
                                         </div>
-                                        <a href="mailto:transportes@adventur.pe"
-                                            class="text-sm font-bold hover:text-brand-yellow transition-colors">transportes@adventur.pe</a>
+                                        <a href="mailto:info@adventur.pe"
+                                            class="text-sm font-bold hover:text-brand-yellow transition-colors">info@adventur.pe</a>
                                     </div>
                                     <div class="flex items-center gap-3">
                                         <div

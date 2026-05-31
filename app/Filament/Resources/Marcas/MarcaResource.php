@@ -48,7 +48,7 @@ class MarcaResource extends Resource
 
     public static function getEloquentQuery(): Builder
     {
-        return parent::getEloquentQuery()->withCount('movilidades');
+        return parent::getEloquentQuery()->withCount('hoteles');
     }
 
     public static function getRelations(): array

@@ -59,7 +59,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="{{ $metaDescription }}">
     <meta name="keywords"
-        content="alquiler de movilidades en cajamarca, transporte turístico perú, traslados corporativos cajamarca, viajes escolares perú, alquiler van cajamarca, tours nacionales perú, adventur">
+        content="hoteles en cajamarca, reserva de hotel perú, hoteles boutique cajamarca, hoteles de lujo perú, alojamiento cajamarca, hoteles 5 estrellas perú, hospedaje corporativo perú, adventur">
     <title>{{ $metaTitle }}</title>
     <link rel="icon" type="image/webp" href="{{ asset('favicon.webp') }}">
     <link rel="canonical" href="{{ url()->current() }}">
@@ -102,12 +102,12 @@
 
                 <div class="flex items-center gap-4 sm:gap-6 shrink-0">
                     <nav class="hidden md:flex items-center gap-4 text-white/90 font-medium">
-                        <a href="#empresas"
-                            class="hover:text-brand-yellow focus:outline-none transition-colors">Empresas</a>
-                        <a href="#turismo"
-                            class="hover:text-brand-yellow focus:outline-none transition-colors">Turismo</a>
-                        <a href="#colegios"
-                            class="hover:text-brand-yellow focus:outline-none transition-colors">Colegios</a>
+                        <a href="#servicios"
+                            class="hover:text-brand-yellow focus:outline-none transition-colors">Corporativo</a>
+                        <a href="#nosotros"
+                            class="hover:text-brand-yellow focus:outline-none transition-colors">Familias</a>
+                        <a href="#preguntas-frecuentes"
+                            class="hover:text-brand-yellow focus:outline-none transition-colors">Grupos</a>
                     </nav>
 
                     <div class="flex items-center gap-3 border-l border-white/20 pl-4 sm:pl-6">
@@ -180,11 +180,6 @@
                     Hoteles
                 </a>
 
-                <a href="{{ route('hoteles.catalogo', ['categoria' => '5 Estrellas']) }}"
-                    class="py-3 text-[0.85rem] lg:text-[0.9rem] font-semibold text-white hover:text-brand-yellow transition-all whitespace-nowrap">
-                    Hoteles de Lujo
-                </a>
-
                 <a href="https://adventur.pe/blog" target="_blank" rel="noopener noreferrer"
                     class="py-3 text-[0.85rem] lg:text-[0.9rem] font-semibold text-white hover:text-brand-yellow transition-all">
                     Blog
@@ -238,7 +233,7 @@
                 <a href="{{ route('hoteles.catalogo') }}"
                     class="flex items-center gap-3 px-3 py-3 rounded-xl transition-colors {{ request()->routeIs('hoteles.catalogo') && !request()->has('categoria') && !request()->has('destino') ? 'bg-brand-blue/10 text-brand-blue font-bold' : 'hover:bg-slate-100 text-slate-700 hover:text-brand-blue' }}"
                     onclick="toggleMobileMenu()">
-                    <img src="{{ asset('iconos/movilidades.svg') }}" class="w-6 h-6 object-contain"
+                    <img src="{{ asset('iconos/hoteles.svg') }}" class="w-6 h-6 object-contain"
                         alt="Hoteles" title="Hoteles">
                     <span class="text-sm font-bold capitalize tracking-wide text-brand-blue">Hoteles</span>
                 </a>
@@ -267,14 +262,6 @@
                         @endforelse
                     </div>
                 </details>
-
-                <a href="{{ route('hoteles.catalogo', ['categoria' => '5 Estrellas']) }}"
-                    class="flex items-center gap-3 px-3 py-3 rounded-xl transition-colors {{ request('categoria') === '5 Estrellas' ? 'bg-brand-blue/10 text-brand-blue font-bold' : 'hover:bg-slate-100 text-slate-700 hover:text-brand-blue' }}"
-                    onclick="toggleMobileMenu()">
-                    <img src="{{ asset('iconos/viajes-escolares.svg') }}" class="w-6 h-6 object-contain"
-                        alt="Hoteles de Lujo" title="Hoteles de Lujo">
-                    <span class="text-sm font-bold capitalize tracking-wide text-brand-blue">Hoteles de Lujo</span>
-                </a>
 
                 <a href="https://adventur.pe/blog" target="_blank" rel="noopener noreferrer"
                     class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-slate-100 text-slate-700 hover:text-brand-blue transition-colors"
@@ -305,7 +292,7 @@
         </div>
     </header>
 
-    <main class="grow w-full {{ request()->routeIs('inicio') ? '' : 'pt-[108px] md:pt-[128px]' }}" id="contenido-principal">
+    <main class="grow w-full {{ request()->routeIs('inicio', 'hoteles.catalogo', 'contacto', 'hotel.detalle') ? '' : 'pt-[108px] md:pt-[128px]' }}" id="contenido-principal">
         {{ $slot }}
     </main>
 
@@ -364,8 +351,8 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                 </svg>
-                                <a href="mailto:transportes@adventur.pe"
-                                    class="hover:text-brand-blue transition-colors">transportes@adventur.pe</a>
+                                <a href="mailto:info@adventur.pe"
+                                    class="hover:text-brand-blue transition-colors">info@adventur.pe</a>
                             </li>
                             <li class="flex items-center gap-3">
                                 <svg class="w-5 h-5 text-brand-blue shrink-0" fill="none" stroke="currentColor"

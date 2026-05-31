@@ -26,9 +26,9 @@ class ModalidadInfolist
                             ->color(fn (bool $state): string => $state ? 'success' : 'danger')
                             ->formatStateUsing(fn (bool $state): string => $state ? 'Activo' : 'Inactivo'),
 
-                        TextEntry::make('movilidades_count')
-                            ->label('Total de Vehículos')
-                            ->state(fn ($record) => $record->movilidades_count ?? 0),
+                        TextEntry::make('hoteles_count')
+                            ->label('Total de Hoteles')
+                            ->state(fn ($record) => $record->hoteles_count ?? 0),
 
                         TextEntry::make('created_at')
                             ->label('Fecha de Creación')

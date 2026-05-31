@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Movilidad;
+use App\Models\Hotel;
 use Illuminate\Http\Response;
 
 class SeoController extends Controller
@@ -28,16 +28,16 @@ class SeoController extends Controller
     {
         $entries = [
             ['loc' => route('inicio'), 'priority' => '1.0', 'changefreq' => 'weekly'],
-            ['loc' => route('flota'), 'priority' => '0.9', 'changefreq' => 'weekly'],
+            ['loc' => route('hoteles.catalogo'), 'priority' => '0.9', 'changefreq' => 'weekly'],
             ['loc' => route('contacto'), 'priority' => '0.8', 'changefreq' => 'monthly'],
         ];
 
-        foreach (Movilidad::query()->where('activo', true)->orderBy('id')->get(['slug', 'updated_at']) as $movilidad) {
+        foreach (Hotel::query()->where('activo', true)->orderBy('id')->get(['slug', 'updated_at']) as $hotel) {
             $entries[] = [
-                'loc' => route('movilidad.detalle', $movilidad->slug),
+                'loc' => route('hotel.detalle', $hotel->slug),
                 'priority' => '0.8',
                 'changefreq' => 'monthly',
-                'lastmod' => $movilidad->updated_at ? $movilidad->updated_at->toAtomString() : now()->toAtomString(),
+                'lastmod' => $hotel->updated_at ? $hotel->updated_at->toAtomString() : now()->toAtomString(),
             ];
         }
 
@@ -48,21 +48,21 @@ class SeoController extends Controller
 
     public function llms(): Response
     {
-        $movilidades = Movilidad::where('activo', true)->get();
-        $appName = config('app.name', 'Movilidades App');
-        
+        $hoteles = Hotel::where('activo', true)->get();
+        $appName = config('app.name', 'Adventur');
+
         $texto = "# {$appName}\n\n";
-        $texto .= "Bienvenido al archivo llms.txt oficial de {$appName}. Este archivo proporciona un mapa estructurado a los modelos de inteligencia artificial (LLMs) y agentes inteligentes sobre el sistema de reserva y alquiler de movilidades con chofer profesional en Cajamarca y Perú.\n\n";
-        
+        $texto .= "Bienvenido al archivo llms.txt oficial de {$appName}. Este archivo proporciona un mapa estructurado a los modelos de inteligencia artificial (LLMs) y agentes inteligentes sobre el sistema de reserva de hoteles en Cajamarca y todo el Perú.\n\n";
+
         $texto .= "## Rutas Principales\n";
         $texto .= "- [Página de Inicio](".route('inicio').")\n";
-        $texto .= "- [Catálogo de la Flota](".route('flota').")\n";
+        $texto .= "- [Catálogo de Hoteles](".route('hoteles.catalogo').")\n";
         $texto .= "- [Contacto Inmediato](".route('contacto').")\n\n";
-        
-        $texto .= "## Catálogo de Vehículos Activos\n";
-        foreach ($movilidades as $m) {
-            $nombreUrl = route('movilidad.detalle', $m->slug);
-            $texto .= "- [{$m->nombre}]({$nombreUrl}): Transporte tipo {$m->categoria} ".($m->capacidad_pasajeros ? 'con capacidad para '.$m->capacidad_pasajeros.' pasajeros' : '').".\n";
+
+        $texto .= "## Hoteles Disponibles\n";
+        foreach ($hoteles as $hotel) {
+            $url = route('hotel.detalle', $hotel->slug);
+            $texto .= "- [{$hotel->nombre}]({$url}): Hotel categoría {$hotel->categoria}".($hotel->capacidad_personas ? ", capacidad para {$hotel->capacidad_personas} personas" : '').".\n";
         }
 
         return response($texto, 200, [

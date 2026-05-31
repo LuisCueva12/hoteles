@@ -27,9 +27,9 @@ class ModalidadsTable
                     ->searchable()
                     ->toggleable(isToggledHiddenByDefault: true),
 
-                TextColumn::make('movilidades_count')
-                    ->label('Vehículos')
-                    ->counts('movilidades')
+                TextColumn::make('hoteles_count')
+                    ->label('Hoteles')
+                    ->counts('hoteles')
                     ->sortable(),
 
                 ToggleColumn::make('activo')

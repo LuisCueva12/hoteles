@@ -1,14 +1,23 @@
 <x-layouts.web :title="'Nuestros Hoteles | '.config('app.name')" description="Explora nuestra amplia selección de hoteles y alojamientos verificados en el Perú. Encuentra tu estadía ideal al mejor precio.">
 
-<div class="bg-brand-blue py-8">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
-        <h1 class="text-3xl font-bold mb-2">
+<section class="relative isolate w-full overflow-hidden bg-brand-blue -mt-[108px] md:-mt-[128px] min-h-[280px] md:min-h-[300px] flex items-end">
+    <img
+        src="{{ asset('img/hero-principal.webp') }}"
+        alt="Catálogo de hoteles en el Perú — {{ config('app.name') }}"
+        class="absolute inset-0 w-full h-full object-cover object-center"
+        loading="eager"
+        decoding="async"
+    >
+    <div class="absolute inset-0 bg-gradient-to-t from-brand-blue/90 via-brand-blue/55 to-brand-blue/30" aria-hidden="true"></div>
+
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8 text-center pb-10 pt-[140px] md:pt-[160px]">
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight tracking-tight mb-3">
             <span class="text-white">Nuestros</span>
             <span class="text-brand-yellow"> Hoteles</span>
         </h1>
-        <p class="text-slate-300 text-sm">{{ $hoteles->total() }} hoteles disponibles</p>
+        <p class="text-white/70 text-sm font-medium">{{ $hoteles->total() }} hoteles disponibles en todo el Perú</p>
     </div>
-</div>
+</section>
 
 @php
     $ordenVista = $orden ?? 'recientes';
@@ -33,20 +42,20 @@
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
             
             <aside class="lg:col-span-3">
-                <details id="flota-filtros-movil" class="group mb-6 rounded-xl border border-slate-200 bg-white shadow-sm lg:hidden">
+                <details id="hotel-filtros-movil" class="group mb-6 rounded-xl border border-slate-200 bg-white shadow-sm lg:hidden">
                     <summary class="flex items-center justify-center gap-2 cursor-pointer list-none px-4 py-4 text-base font-bold text-brand-blue [&::-webkit-details-marker]:hidden">
                         <x-dynamic-component :component="'lucide-sliders-horizontal'" class="w-4 h-4 shrink-0" stroke-width="2" />
                         Filtros
                         <x-dynamic-component :component="'lucide-chevron-down'" class="w-4 h-4 shrink-0 transition-transform group-open:rotate-180" stroke-width="2" />
                     </summary>
                     <div class="border-t border-slate-200 px-5 pb-5 pt-0">
-                        @include('pages.hoteles-catalogo.partials.filtros-sidebar-inner', ['pasajerosFormId' => 'form-flota-pasajeros-movil'])
+                        @include('pages.hoteles-catalogo.partials.filtros-sidebar-inner', ['pasajerosFormId' => 'form-hotel-huespedes-movil'])
                     </div>
                 </details>
 
                 <div class="hidden lg:block">
                     <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-5">
-                        @include('pages.hoteles-catalogo.partials.filtros-sidebar-inner', ['pasajerosFormId' => 'form-flota-pasajeros-escritorio'])
+                        @include('pages.hoteles-catalogo.partials.filtros-sidebar-inner', ['pasajerosFormId' => 'form-hotel-huespedes-escritorio'])
                     </div>
                 </div>
             </aside>
@@ -131,9 +140,9 @@
                 @endif
 
                 @if($hoteles->count() > 0)
-                    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                    <div class="bg-white rounded-2xl shadow-sm border border-slate-100 px-6 sm:px-10 py-6">
                         @foreach($hoteles as $hotel)
-                            <x-hoteles.tarjeta :hotel="$hotel" />
+                            <x-hoteles.tarjeta-lista :hotel="$hotel" />
                         @endforeach
                     </div>
 

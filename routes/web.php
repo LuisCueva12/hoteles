@@ -14,7 +14,6 @@ Route::middleware('guest')->group(function () {
 
 Route::get('/', [CatalogoController::class, 'inicio'])->name('inicio');
 Route::get('/hoteles', [CatalogoController::class, 'catalogo'])->name('hoteles.catalogo');
-Route::get('/flota', [CatalogoController::class, 'catalogo'])->name('flota');
 Route::get('/contacto', [CatalogoController::class, 'contacto'])->name('contacto');
 Route::post('/contacto', function () {
     return redirect()->route('contacto')->with('success', 'Mensaje enviado correctamente');

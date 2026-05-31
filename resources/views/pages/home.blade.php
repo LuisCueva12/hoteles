@@ -2,7 +2,7 @@
 
     <x-sections.hero-buscador :filtros="$filtros" />
     <x-sections.ciudades :destinos="$destinosExplorar" />
-    <x-sections.vehiculos-destacados :hoteles="$hoteles" />
+    <x-sections.hoteles-destacados :hoteles="$hoteles" />
     <x-sections.estilos-viaje :hoteles="$hoteles" />
     <x-sections.servicios />
     <x-sections.promo-doble-banners />

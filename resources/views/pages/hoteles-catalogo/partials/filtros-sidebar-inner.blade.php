@@ -7,11 +7,11 @@
         'precio_desc' => 'Precio: mayor a menor',
         'capacidad_desc' => 'Mayor capacidad',
     ];
-    $capFlotaSidebar = max(1, (int) ($filtros['capacidad_max_hoteles'] ?? 1));
+    $capHotelesSidebar = max(1, (int) ($filtros['capacidad_max_hoteles'] ?? 1));
     $sbPaxVal = 1;
     if (request()->filled('personas_min')) {
         $v = (int) request('personas_min');
-        if ($v >= 2 && $v <= $capFlotaSidebar) {
+        if ($v >= 2 && $v <= $capHotelesSidebar) {
             $sbPaxVal = $v;
         }
     }
@@ -105,7 +105,7 @@
         action="{{ route('hoteles.catalogo') }}"
         class="min-w-0 space-y-3"
         data-pax-min-counter
-        data-pax-cap="{{ $capFlotaSidebar }}"
+        data-pax-cap="{{ $capHotelesSidebar }}"
         data-pax-counter-auto-submit="1"
     >
         @foreach(request()->except(['personas_min', 'personas_max', 'page']) as $name => $value)
@@ -133,7 +133,7 @@
                     <input type="hidden" class="hero-pax-input" value="{{ $sbPaxVal }}">
                     <span>{{ $sbPaxVal }} huéspedes</span>
                 </div>
-                <button type="button" class="w-8 h-8 rounded-full bg-white border border-slate-200 flex items-center justify-center font-bold text-ink cursor-pointer focus:outline-none" onclick="var el = this.previousElementSibling.querySelector('input'); var val = Math.min({{ $capFlotaSidebar }}, parseInt(el.value) + 1); el.value = val; this.closest('form').querySelector('.hero-pax-hidden').value = val; this.previousElementSibling.querySelector('span').innerText = val + ' huéspedes'; this.closest('form').submit();">
+                <button type="button" class="w-8 h-8 rounded-full bg-white border border-slate-200 flex items-center justify-center font-bold text-ink cursor-pointer focus:outline-none" onclick="var el = this.previousElementSibling.querySelector('input'); var val = Math.min({{ $capHotelesSidebar }}, parseInt(el.value) + 1); el.value = val; this.closest('form').querySelector('.hero-pax-hidden').value = val; this.previousElementSibling.querySelector('span').innerText = val + ' huéspedes'; this.closest('form').submit();">
                     +
                 </button>
             </div>

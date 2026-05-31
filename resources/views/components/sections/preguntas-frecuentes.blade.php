@@ -3,26 +3,26 @@
         <header class="text-center mb-12">
             <h2 id="faq-titulo" class="section-title leading-tight tracking-tight mb-4">
                 <span class="text-brand-blue">Preguntas frecuentes</span>
-                <span class="text-brand-yellow"> sobre alquiler de movilidad</span>
+                <span class="text-brand-yellow"> sobre reserva de hoteles</span>
             </h2>
             <p class="text-ink text-body-16 font-medium max-w-xl mx-auto">
-                Información clara sobre documentos, privacidad y modalidad de servicio para tu reserva en Cajamarca y en todo el Perú.
+                Información clara sobre reservas, disponibilidad y tipos de alojamiento para tu estadía en Cajamarca y en todo el Perú.
             </p>
         </header>
 
         @php
             $preguntas = [
                 [
-                    'pregunta' => '¿Qué documentos necesito para alquilar un vehículo y cómo protegen mis datos?',
-                    'respuesta' => 'Para alquilar una movilidad solo necesitas presentar tu documento de identidad, requerido para el registro de la reserva. La información personal se trata de forma confidencial y conforme a nuestra política de protección de datos: se utiliza exclusivamente para reserva, facturación y coordinación del servicio, sin compartirse con terceros sin tu autorización.',
+                    'pregunta' => '¿Qué documentos necesito para reservar un hotel?',
+                    'respuesta' => 'Para reservar un hotel solo necesitas tu documento de identidad (DNI o pasaporte) al momento del check-in. La reserva se realiza a través de WhatsApp o nuestro formulario en línea, y tus datos personales se tratan de forma confidencial conforme a nuestra política de privacidad: se utilizan exclusivamente para la gestión del alojamiento, sin compartirse con terceros sin tu autorización.',
                 ],
                 [
-                    'pregunta' => '¿Mis datos personales están seguros al realizar una reserva?',
-                    'respuesta' => 'Sí. Protegemos tu información bajo estándares de confidencialidad y seguridad. Los datos se usan únicamente para la gestión del servicio solicitado y no se comparten con terceros sin tu consentimiento previo.',
+                    'pregunta' => '¿Mis datos personales están seguros al hacer una reserva?',
+                    'respuesta' => 'Sí. Protegemos tu información bajo estándares de confidencialidad y seguridad. Los datos se usan únicamente para gestionar tu reserva y no se comparten con terceros sin tu consentimiento previo.',
                 ],
                 [
-                    'pregunta' => '¿Qué modalidades de servicio ofrecen para el alquiler de movilidades?',
-                    'respuesta' => 'Ofrecemos movilidades con conductor profesional, con puntualidad y seguridad en cada traslado. Ideal para transporte corporativo, turístico y privado en Cajamarca y a nivel nacional.',
+                    'pregunta' => '¿Qué tipos de alojamiento ofrecen?',
+                    'respuesta' => 'Contamos con hoteles de 3, 4 y 5 estrellas, hoteles boutique y resorts en los principales destinos del Perú. Todos verificados y con habitaciones cómodas, ubicaciones convenientes y atención personalizada. Puedes filtrar por categoría, destino y capacidad desde nuestro catálogo.',
                 ],
             ];
         @endphp
